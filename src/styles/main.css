@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -48,13 +49,14 @@ body {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .nav__list {
   width: 100%;
   padding: 0;
   margin: 0;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .nav__item {
@@ -77,6 +79,14 @@ body {
 .nav a:hover {
   text-decoration: underline;
   color: #000;
+}
+
+#hamburger {
+  font-size: 32px;
+  margin: 10px auto;
+  display: block;
+  width: 30px;
+  text-decoration: none;
 }
 
 /*
@@ -201,7 +211,7 @@ main {
 }
 
 .latest__label::after {
-  content: '';
+  content: "";
   margin-top: 16px;
   display: block;
   border-bottom: 1px solid #eeeeee;
@@ -292,23 +302,77 @@ footer a {
   display: inline-block;
   padding: 1.3em;
   text-decoration: none;
-  color: #fff
+  color: #fff;
 }
 
 /* Media Query */
 @media screen and (min-width: 360px) {
   .posts {
+    /* tampilan grid */
     display: grid;
+    /* jarak antar baris */
     grid-row-gap: 16px;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .nav {
+    z-index: 10;
+    background-color: #fff;
+    width: 300px;
+    position: absolute;
+    /* This trasform moves the drawer off canvas. */
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
+    /* Optionally, we animate the drawer. */
+    transition: transform 0.3s ease;
+  }
+
+  .open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  .nav__item {
+    display: list-item;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  #hamburger {
+    display: none;
   }
 }
 
 @media screen and (min-width: 700px) {
   .posts {
     display: grid;
+    /* template banyaknya kolom */
     grid-template-columns: 1fr 1fr;
     /* grid-template-columns: 1fr 1fr; */
     grid-row-gap: 16px;
+    /* jarak antar korom */
     grid-column-gap: 10px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .headline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .posts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  main {
+    max-width: 1200px;
   }
 }
